@@ -1,0 +1,9 @@
+venv/
+__pycache__/
+*.pyc
+*.index
+chunks.json
+knowledge_chunks.json
+temp_page_0.png
+books/
+.env
