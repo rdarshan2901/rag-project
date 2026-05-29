@@ -83,6 +83,7 @@ app.add_middleware(
 
 class ChatRequest(BaseModel):
     message: str
+    book: str
 
 # ==========================================
 # HOME ROUTE
@@ -240,6 +241,7 @@ Give a clear, beautiful, well-structured response.
         )
 
         answer = response.choices[0].message.content
+        final_answer = answer + f"\n\nAnswer taken from this book: {req.book}"
 
         # ==========================================
         # RETURN RESPONSE
@@ -248,8 +250,7 @@ Give a clear, beautiful, well-structured response.
         return {
             "success": True,
             "question": question,
-            "answer": answer,
-            "sources": sources
+            "answer": final_answer
         }
 
     except HTTPException:
